@@ -1,0 +1,29 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+df=pd.read_csv("uber.csv")
+print(df.head())
+print(df.info())
+print(df.columns)
+print(df.dtypes)
+print(df.describe())
+
+# finding missing data
+print(df.isnull().sum())
+
+df['dropoff_latitude'].fillna(value=df['dropoff_latitude'].mean(),inplace = True)
+df['dropoff_longitude'].fillna(value=df['dropoff_longitude'].median(),inplace = True)
+
+print(df.isnull().sum())
+
+# drop the column
+df = df.drop('pickup_datetime',axis=1)
+
+# finding outliers
+df.plot(kind = "box",subplots = True,layout = (7,2),figsize=(15,20)) #Boxplot to check the outliers
+# plt.show()
+
+# removing outliers
+x = df[['pickup_longitude','pickup_latitude','dropoff_longitude','dropoff_latitude','passenger_count','hour','day','month','year','dayofweek','dist_travel_km']]
+y = df['fare_amount']
