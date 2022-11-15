@@ -1,0 +1,32 @@
+pragma solidity ^0.6.8;
+
+contract calculator
+
+{
+    uint a; 
+    uint b;
+
+    function set_a(uint x)public {
+        a=x;
+    }
+
+    function set_b(uint y)public {
+        b=y;
+    }
+
+    function add()public view returns (uint) {
+        return a + b;
+    }
+
+    function subtract() public view returns (uint) {
+        return a - b;
+    }
+
+    function multipication() public view returns (uint) {
+        return a * b;
+    }
+
+    function division() public view returns (uint) {
+        return a / b;
+    }
+}
