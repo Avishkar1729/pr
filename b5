@@ -1,0 +1,24 @@
+// Solidity program to retrieve address and balance of owner
+pragma solidity ^0.6.8;
+
+// Creating a contract
+contract MyContract {
+
+    // private state variable
+    address private owner;
+
+    // defining a constructor
+    constructor() public {
+        owner = msg.sender;
+    }
+
+    // function to get address of owner
+    function getOwner() public view returns (address) {
+        return owner;
+    }
+
+    // function to return current balance of owner
+    function getBalance() public view returns (uint256) {
+        return owner.balance;
+    }
+}
